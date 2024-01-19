@@ -9,3 +9,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
+javatar:
+  app:
+    jwtSecret: Javatar.comSecretKey
+    jwtExpirationMs: 86400000

@@ -20,22 +20,28 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private Integer action;
+    private String startTime;
+    private String endTime;
+    private Integer active;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> outhorization = new HashSet<>();
+    private Set<Role> authorities = new HashSet<>();
 
     public User() {
     }
 
-    public User(String username, String password, String email, Integer action) {
+    public User(String username, String email, String password, Integer active, String startTime, String endTime) {
         this.username = username;
-        this.password = password;
         this.email = email;
-        this.action = action;
+        this.password = password;
+        this.active = active;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
+
+   
 
 }
