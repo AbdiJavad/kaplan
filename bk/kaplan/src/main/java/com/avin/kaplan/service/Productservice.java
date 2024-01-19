@@ -15,10 +15,10 @@ public class Productservice {
     ProductRepository productRepository;
 
     public Product updateProduct(Long id, Product products) {
-        Product product = null;
+        Product product ;
         Optional<Product> productData = productRepository.findById(id);
         if (productData.isPresent()) {
-            products = productData.get();
+            product = productData.get();
         } else {
             return null;
         }
@@ -27,6 +27,12 @@ public class Productservice {
         }
         if (products.getName() != null) {
             product.setName(products.getName());
+        }
+        if(products.getWeight() !=0){
+            product.setWeight(products.getWeight());
+        }
+        if(products.getDateCreated()!=null){
+            product.setDateCreated(products.getDateCreated());
         }
        return productRepository.save(product);
     }
