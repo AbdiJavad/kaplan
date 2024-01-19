@@ -29,7 +29,7 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id) {
-        productRepository.findById(id);
+        productRepository.deleteById(id);
     }
 
     @PutMapping("/{id}")
