@@ -1,5 +1,6 @@
 package com.avin.kaplan.model.oauth;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -16,14 +17,17 @@ import java.util.Set;
 
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_sec")
+    @SequenceGenerator(name = "users_sec", sequenceName = "users_sec", allocationSize = 1)
     private Long id;
     private String username;
+    @JsonIgnore
     private String password;
     private String email;
     private String startTime;
     private String endTime;
     private Integer active;
-
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -42,6 +46,5 @@ public class User {
         this.endTime = endTime;
     }
 
-   
 
 }
