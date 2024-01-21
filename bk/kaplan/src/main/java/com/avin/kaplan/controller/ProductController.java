@@ -22,7 +22,7 @@ public class ProductController {
         return productRepository.findAll();
     }
 
-    @GetMapping("{id}"
+    @GetMapping("{id}")
     public Product findByProductId(@PathVariable("id") Long id){
         return productRepository.findById(id);
     }
