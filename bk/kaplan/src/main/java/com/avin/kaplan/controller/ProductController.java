@@ -22,6 +22,11 @@ public class ProductController {
         return productRepository.findAll();
     }
 
+    @GetMapping("{id}"
+    public Product findByProductId(@PathVariable("id") Long id){
+        return productRepository.findById(id);
+    }
+
     @PostMapping
     public Product save(@RequestBody Product product) {
         return productRepository.save(product);
@@ -35,6 +40,5 @@ public class ProductController {
     @PutMapping("/{id}")
     public Product updateProduct(@PathVariable("id") Long id, @RequestBody Product product) {
         return productservice.updateProduct(id, product);
-
     }
 }

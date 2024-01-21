@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("Paint")
+@RequestMapping("paint")
 public class PaintController {
+    
     @Autowired
-    public PaintRepository paintRepository;
+    private PaintRepository paintRepository;
     @Autowired
-    public PaintService paintService;
+    private PaintService paintService;
 
     @GetMapping
     public List<Paint> getPaint() {
@@ -28,10 +29,11 @@ public class PaintController {
         return paintRepository.save(paint);
     }
 
-  @DeleteMapping("/{id}")
-    public void delet(@PathVariable("id") Long id,@RequestBody Paint paint) {
+    @DeleteMapping("/{id}")
+    public void delet(@PathVariable("id") Long id, @RequestBody Paint paint) {
         paintRepository.delete(paint);
     }
+    
     @PutMapping("/{id}")
     public Paint updatePaint(@PathVariable("id") Long id,@RequestBody Paint paint){
         return paintService.updatePaint(id,paint);
