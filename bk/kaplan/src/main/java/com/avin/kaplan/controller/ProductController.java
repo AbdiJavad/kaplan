@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("product")
@@ -24,7 +25,12 @@ public class ProductController {
 
     @GetMapping("{id}")
     public Product findByProductId(@PathVariable("id") Long id){
-        return productRepository.findById(id);
+        Product product = new Product();
+        Optional<Product> productData = productRepository.findById(id);
+        if (productData.isPresent()){
+            product = productData.get();
+        }
+        return product;
     }
 
     @PostMapping
