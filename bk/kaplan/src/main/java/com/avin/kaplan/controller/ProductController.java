@@ -14,9 +14,9 @@ import java.util.Optional;
 public class ProductController {
 
     @Autowired
-    public ProductRepository productRepository;
+    private ProductRepository productRepository;
     @Autowired
-    Productservice productservice;
+    private Productservice productservice;
 
     @GetMapping
     public List<Product> getProduct() {
