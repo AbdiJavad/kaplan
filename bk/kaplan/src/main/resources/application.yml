@@ -14,3 +14,19 @@ javatar:
   app:
     jwtSecret: Javatar.comSecretKey
     jwtExpirationMs: 86400000
+
+logging:
+  level:
+    org:
+      springframework:
+        web: info
+      hibernate: error
+    com:
+      avin:
+        kaplan: debug
+
+
+
+
+
+
