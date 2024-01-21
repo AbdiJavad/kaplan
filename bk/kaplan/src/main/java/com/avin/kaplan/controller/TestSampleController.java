@@ -4,6 +4,7 @@ import com.avin.kaplan.model.TestSample;
 import com.avin.kaplan.repository.TestSampleRepository;
 import com.avin.kaplan.service.TestSampleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,11 +19,13 @@ public class TestSampleController {
     private TestSampleRepository testRepository;
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     public List<TestSample> tests() {
         return testRepository.findAll();
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public TestSample save(@RequestBody TestSample test) {
         return testRepository.save(test);
     }
